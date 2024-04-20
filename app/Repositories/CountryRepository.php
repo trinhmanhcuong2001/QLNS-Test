@@ -19,7 +19,7 @@ class CountryRepository {
         return $this->country->create($data);
     }
 
-    public function find($id){
+    public function findOrFail($id){
         return $this->country->findOrFail($id);
     }
 

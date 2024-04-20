@@ -19,7 +19,7 @@ class UserRepository {
         return $this->user->create($data);
     }
 
-    public function find($id) {
+    public function findOrFail($id) {
         return $this->user->findOrFail($id);
     }
 

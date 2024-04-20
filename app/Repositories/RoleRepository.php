@@ -18,7 +18,7 @@ class RoleRepository {
         return $this->role->create($data);
     }
 
-    public function find($id){
+    public function findOrFail($id){
         return $this->role->find($id);
     }
 

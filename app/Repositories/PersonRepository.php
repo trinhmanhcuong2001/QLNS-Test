@@ -18,7 +18,7 @@ class PersonRepository {
         return $this->person->where('user_id', $id)->first();
     }
 
-    public function find($id) {
+    public function findOrFail($id) {
         return $this->person->find($id);
     }
 

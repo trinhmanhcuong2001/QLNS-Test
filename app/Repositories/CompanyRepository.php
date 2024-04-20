@@ -19,7 +19,7 @@ class CompanyRepository {
         $this->company->create($data);
     }
 
-    public function find($id){
+    public function findOrFail($id){
         return $this->company->find($id);
     }
 
