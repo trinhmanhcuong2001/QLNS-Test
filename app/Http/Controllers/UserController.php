@@ -60,7 +60,7 @@ class UserController extends Controller
         return redirect('users/index');          
     }
 
-    public function delete($id){
+    public function destroy($id){
         $this->userService->delete($id);
         return redirect()->back();
     }

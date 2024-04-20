@@ -43,7 +43,7 @@ class CountryController extends Controller
         return redirect('/countries/index');
     }
 
-    public function delete($id){
+    public function destroy($id){
         $this->countryService->delete($id);
         return redirect('/countries/index');
     }

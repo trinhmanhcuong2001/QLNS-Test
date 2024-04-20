@@ -24,7 +24,7 @@ Route::prefix('countries')->group(function() {
     Route::post('create', [CountryController::class, 'store']);
     Route::get('edit/{country}', [CountryController::class, 'edit']);
     Route::post('edit/{country}', [CountryController::class, 'update']);
-    Route::get('delete/{country}', [CountryController::class, 'delete']);
+    Route::get('delete/{country}', [CountryController::class, 'destroy']);
 });
 
 Route::prefix('users')->group(function () {
@@ -33,7 +33,7 @@ Route::prefix('users')->group(function () {
     Route::post('create', [UserController::class, 'store']);
     Route::get('edit/{user}', [UserController::class, 'edit']);
     Route::put('edit/{user}', [UserController::class, 'update']);
-    Route::get('delete/{user}', [UserController::class, 'delete']);
+    Route::get('delete/{user}', [UserController::class, 'destroy']);
     Route::post('addRole', [UserController::class, 'addRole']);
     Route::DELETE('removeRole', [UserController::class, 'removeRole']);
 });
