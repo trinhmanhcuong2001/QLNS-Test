@@ -24,12 +24,12 @@ class CompanyRepository {
     }
 
     public function update($id, $data){
-        $company = $this->find($id);
+        $company = $this->findOrFail($id);
         $company->update($data);
     }
 
     public function delete($id){
-        $company = $this->find($id);
+        $company = $this->findOrFail($id);
         $company->delete();
     }
 

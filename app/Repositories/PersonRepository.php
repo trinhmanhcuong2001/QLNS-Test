@@ -23,7 +23,7 @@ class PersonRepository {
     }
 
     public function update($id, $data){
-        $person = $this->find($id);
+        $person = $this->findOrFail($id);
         $person->update($data);
         return $person;
     }

@@ -24,13 +24,13 @@ class CountryRepository {
     }
 
     public function update($id, $data){
-        $country = $this->find($id);
+        $country = $this->findOrFail($id);
         $country->update($data);
         return $country;
     }
 
     public function delete($id){
-        $country = $this->find($id);
+        $country = $this->fifindOrFailnd($id);
         $country->delete();
     }
 }

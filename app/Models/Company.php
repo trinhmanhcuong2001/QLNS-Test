@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\hasMany;
 
 class Company extends Model
 {
@@ -14,4 +15,9 @@ class Company extends Model
         'code',
         'address'
     ];
+
+    public function departments(): hasMany
+    {
+        return $this->hasMany(Department::class);
+    }
 }

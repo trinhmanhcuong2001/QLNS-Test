@@ -72,4 +72,5 @@ Route::prefix('departments')->group(function (){
     Route::get('edit/{department}', [DepartmentController::class, 'edit']);
     Route::put('edit/{department}', [DepartmentController::class, 'update']);
     Route::get('delete/{department}', [DepartmentController::class, 'destroy']);
+    Route::get('getDepartmentParents', [DepartmentController::class, 'getDepartmentParents']);
 });

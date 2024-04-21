@@ -1,7 +1,4 @@
 @extends('layout')
-@section('head')
-  <meta name="csrf-token" content="{{ csrf_token() }}" />
-@endsection
 @section('content')
     <!-- Content Header (Page header) -->
     <section class="content-header">

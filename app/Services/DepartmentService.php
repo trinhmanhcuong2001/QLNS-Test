@@ -29,4 +29,8 @@ class DepartmentService {
     public function delete($id){
         $this->departmentRepository->delete($id);
     }
+
+    public function departmentParents(){
+        return $this->departmentRepository->departmentParents();
+    }
 }

@@ -23,12 +23,12 @@ class RoleRepository {
     }
 
     public function update($id,$data){
-        $role = $this->find($id);
+        $role = $this->findOrFail($id);
         $role->update($data);
     }
 
     public function delete($id){
-        $role = $this->find($id);
+        $role = $this->findOrFail($id);
         $role->delete();
     }
 }

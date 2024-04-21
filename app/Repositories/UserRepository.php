@@ -24,12 +24,12 @@ class UserRepository {
     }
 
     public function update($id, $data) {
-        $user = $this->find($id);
+        $user = $this->findOrFail($id);
         $user->update($data);
     }
 
     public function delete($id) {
-        $user = $this->find($id);
+        $user = $this->findOrFail($id);
         $user->delete();
     }
 
@@ -38,13 +38,13 @@ class UserRepository {
     }
 
     public function addRole($id, $role){
-        $user = $this->find($id);
+        $user = $this->findOrFail($id);
         $user->roles()->attach([$role]);
         return $user;
     }
 
     public function removeRole($id, $role){
-        $user = $this->find($id);
+        $user = $this->findOrFail($id);
         $user->roles()->detach($role);
         return $user;
     }
