@@ -18,17 +18,17 @@ class RoleRepository {
         return $this->role->create($data);
     }
 
-    public function findOrFail($id){
-        return $this->role->find($id);
+    public function find($id){
+        return $this->role->findOrFail($id);
     }
 
     public function update($id,$data){
-        $role = $this->findOrFail($id);
+        $role = $this->find($id);
         $role->update($data);
     }
 
     public function delete($id){
-        $role = $this->findOrFail($id);
+        $role = $this->find($id);
         $role->delete();
     }
 }

@@ -19,17 +19,17 @@ class CompanyRepository {
         $this->company->create($data);
     }
 
-    public function findOrFail($id){
-        return $this->company->find($id);
+    public function find($id){
+        return $this->company->findOrFail($id);
     }
 
     public function update($id, $data){
-        $company = $this->findOrFail($id);
+        $company = $this->find($id);
         $company->update($data);
     }
 
     public function delete($id){
-        $company = $this->findOrFail($id);
+        $company = $this->find($id);
         $company->delete();
     }
 

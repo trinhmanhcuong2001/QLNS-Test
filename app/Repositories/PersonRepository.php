@@ -10,6 +10,10 @@ class PersonRepository {
         $this->person = $person;
     }
 
+    public function all(){
+        return $this->person->all();
+    }
+
     public function create($data){
         return $this->person->create($data);
     }
@@ -18,12 +22,12 @@ class PersonRepository {
         return $this->person->where('user_id', $id)->first();
     }
 
-    public function findOrFail($id) {
-        return $this->person->find($id);
+    public function find($id) {
+        return $this->person->findOrFail($id);
     }
 
     public function update($id, $data){
-        $person = $this->findOrFail($id);
+        $person = $this->find($id);
         $person->update($data);
         return $person;
     }

@@ -7,6 +7,7 @@ use App\Http\Controllers\PersonController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\ProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,4 +74,14 @@ Route::prefix('departments')->group(function (){
     Route::put('edit/{department}', [DepartmentController::class, 'update']);
     Route::get('delete/{department}', [DepartmentController::class, 'destroy']);
     Route::get('getDepartmentParents', [DepartmentController::class, 'getDepartmentParents']);
+});
+//Project Routes
+Route::prefix('projects')->group(function (){
+    Route::get('index', [ProjectController::class, 'index']);
+    Route::get('create', [ProjectController::class, 'create']);
+    Route::post('create', [ProjectController::class, 'store']);
+    Route::get('edit/{project}', [ProjectController::class, 'edit']);
+    Route::put('edit/{project}', [ProjectController::class, 'update']);
+    Route::get('delete/{project}', [ProjectController::class, 'destroy']);
+    Route::get('getPersons', [ProjectController::class, 'getPersons']);
 });

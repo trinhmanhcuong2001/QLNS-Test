@@ -19,18 +19,18 @@ class CountryRepository {
         return $this->country->create($data);
     }
 
-    public function findOrFail($id){
+    public function find($id){
         return $this->country->findOrFail($id);
     }
 
     public function update($id, $data){
-        $country = $this->findOrFail($id);
+        $country = $this->find($id);
         $country->update($data);
         return $country;
     }
 
     public function delete($id){
-        $country = $this->fifindOrFailnd($id);
+        $country = $this->find($id);
         $country->delete();
     }
 }

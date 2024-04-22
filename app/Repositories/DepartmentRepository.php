@@ -18,17 +18,17 @@ class DepartmentRepository {
         return $this->department->create($data);
     }
 
-    public function findOrFail($id){
+    public function find($id){
         return $this->department->findOrFail($id);
     }
 
     public function update($id, $data){
-        $department = $this->findOrFail($id);
+        $department = $this->find($id);
         $department->update($data);
     }
 
     public function delete($id){
-        $department = $this->findOrFail($id);
+        $department = $this->find($id);
         $department->delete();
     }
 

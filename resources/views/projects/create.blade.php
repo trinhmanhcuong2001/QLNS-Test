@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Thêm thông phòng ban</h1>
+                <h1>Thêm thông dự án</h1>
             </div>
             
             </div>
@@ -31,16 +31,19 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="exampleInpuCode1">Mã</label>
-                            <input type="text" class="form-control" id="exampleInpuCode1" placeholder="Nhập mã phòng ban" name="code">
+                            <input type="text" class="form-control" id="exampleInpuCode1" placeholder="Nhập mã dự án" name="code">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputName1">Tên</label>
-                            <input type="text" class="form-control" id="exampleInputName1" placeholder="Nhập tên phòng ban" name="name">
+                            <input type="text" class="form-control" id="exampleInputName1" placeholder="Nhập tên dự án" name="name">
                         </div>
-                        
+                        <div class="form-group">
+                            <label for="exampleInputDescription1">Mô tả</label>
+                            <input type="text" class="form-control" id="exampleInputDescription1" placeholder="Mô tả" name="description">
+                        </div>                      
                         <div class="form-group">
                             <label for="exampleInputCompany1">Công ty</label>
-                            <select name="company_id" id="exampleInputCompany1" class="form-control" onchange="getDepartment();">
+                            <select name="company_id" id="exampleInputCompany1" class="form-control" onchange="getPerson();">
                                 <option value="">Chọn công ty</option>
                                 @foreach ($companies as $company)
                                     <option value="{{$company->id}}">{{$company->name}}</option>
@@ -48,8 +51,8 @@
                             </select> 
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputParent1">Phòng ban cha</label>
-                            <select name="parent_id" id="exampleInputParent1" class="form-control">
+                            <label for="exampleInputPerson1">Nhân viên</label>
+                            <select name="person_id[]" id="exampleInputPerson1" class="form-control" multiple>
                                 
                             </select> 
                         </div>
@@ -74,7 +77,7 @@
 @endsection
 @section('footer')
     <script>
-        const url = '{{url('/departments/getDepartmentParents')}}';
+       const url = '{{URL::to('/projects/getPersons')}}' 
     </script>
     <script src="{{URL::asset('template/js/main.js')}}"></script>
     

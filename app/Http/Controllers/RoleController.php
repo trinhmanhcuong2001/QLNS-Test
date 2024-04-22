@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\RoleService;
+use App\Http\Requests\RoleFormRequest;
 
 class RoleController extends Controller
 {
@@ -23,7 +24,7 @@ class RoleController extends Controller
         return view('roles/create');
     }
 
-    public function store(Request $request){
+    public function store(RoleFormRequest $request){
         $this->roleService->create($request->all());
         session()->flash('success','Thêm quyền thành công');
         return redirect('roles/create');
@@ -36,7 +37,7 @@ class RoleController extends Controller
         ]);
     }
 
-    public function update($role, Request $request){
+    public function update($role, RoleFormRequest $request){
         $this->roleService->update($role, $request->all());
         \session()->flash('success','Cập nhật thành công');
         return redirect('roles/index');

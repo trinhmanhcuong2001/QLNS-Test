@@ -10,6 +10,10 @@ class PersonService {
         $this->personRepository = $personRepository;
     }
 
+    public function all(){
+        return $this->personRepository->all();
+    }
+
     public function create($user, $data){
         $data['user_id'] = $user;
         return $this->personRepository->create($data);
