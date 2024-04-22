@@ -12,7 +12,7 @@ class CompanyRepository {
     }
 
     public function all(){
-        return $this->company->all();
+        return $this->company->paginate(10);
     }
 
     public function create($data){

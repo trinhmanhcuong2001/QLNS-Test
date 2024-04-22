@@ -66,6 +66,7 @@
                   
                   </tbody>
                 </table>
+                {{$users->links()}}
               </div>
               <!-- /.card-body -->
             </div>

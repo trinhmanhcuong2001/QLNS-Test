@@ -77,6 +77,7 @@
                   
                   </tbody>
                 </table>
+                {{$companies->links()}}
               </div>
               <!-- /.card-body -->
             </div>
