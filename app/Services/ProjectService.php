@@ -37,20 +37,23 @@ class ProjectService
     }
 
     public function update($id, $data){
-        return $this->projectRepository->update($id, $data);
+        DB::beginTransaction();
+        try{
+            $project = $this->projectRepository->update($id, $data);
+            $this->projectRepository->addPersonProject($project->id,$data['person_id']);
+            DB::commit();
+            return true;
+
+        }catch(Exception $e){
+            DB::rollBack();
+            session()->flash('error', $e->getMessage());
+            return false;
+        }
     }
 
     public function delete($id){
         $this->projectRepository->delete($id);
     }
 
-    public function addPersonProject($project, $person){
-        
-        try {
-            $project = $this->projectRepository->create($project,$person);
-        } catch (\Exception $e) {
-            //throw $th;
-        }
-    }
 
 }

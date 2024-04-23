@@ -14,15 +14,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function getDepartment(){
     var companyId = company.value;
-    console.log(companyId);
+    if(document.getElementById('parent-id')){
+        var parentId = document.getElementById('parent-id').value;
+    }
     fetch(url)
     .then(response => response.json())
     .then(data => {
         let options = '<option value="0">Phòng ban cha</option>';
-        data.departmentParents.forEach(parent => {
+        data.departmentParents.forEach(department => {
             
-           if(parent.parent_id == 0 && parent.company_id == companyId){
-                options += '<option value="' + parent.id + '"> ' + parent.name + '</option>';
+           if(department.parent_id == 0 && department.company_id == companyId){
+                options += '<option value="' + department.id + '" ' + (department.id == parentId ? "selected" : "") +'> ' + department.name + '</option>';
            } 
            
         });
@@ -41,8 +43,19 @@ function getPerson(){
     .then(data => {
         let options = '';
         data.people.forEach(person => {
+            let isSelected = ''; // Biến để kiểm tra xem person đã được chọn hay chưa
+            // Kiểm tra xem person đã được liên kết với project hay không
+            if(typeof projectId !== 'undefined'){
+                if (person.projects.length > 0) {
+                    person.projects.forEach(project => {
+                        if (project.id === projectId) {
+                            isSelected = 'selected';
+                        }
+                    });
+                }
+            }
             if(person.company_id == companyId){
-                options += '<option value="' + person.id + '">' + person.full_name + '</option>';
+                options += '<option value="' + person.id + '" '+ isSelected +'>' + person.full_name + '</option>';
             }
         });
         document.getElementById('exampleInputPerson1').innerHTML = options;

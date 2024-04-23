@@ -14,6 +14,10 @@ class PersonRepository {
         return $this->person->all();
     }
 
+    public function allWithProject(){
+        return $this->person->with('projects')->get();
+    }
+
     public function create($data){
         return $this->person->create($data);
     }

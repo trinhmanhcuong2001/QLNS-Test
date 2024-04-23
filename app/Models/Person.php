@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\belongsTo;
+use Illuminate\Database\Eloquent\Relations\belongsToMany;
 
 
 class Person extends Model
@@ -27,5 +28,10 @@ class Person extends Model
 
     public function company(): belongsTo {
         return $this->belongsTo(Company::class);
+    }
+
+    public function projects(): belongsToMany
+    {
+        return $this->belongsToMany(Project::class, 'person_project', 'person_id', 'project_id')->withTimestamps();
     }
 }

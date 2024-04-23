@@ -35,6 +35,7 @@ class ProjectRepository {
 
     public function addPersonProject($project, $person){
         $project = $this->find($project);
+        $project->people()->detach();
         $project->people()->attach($person);
     }
 }

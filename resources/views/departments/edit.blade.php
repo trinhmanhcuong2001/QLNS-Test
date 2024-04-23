@@ -48,6 +48,7 @@
                             </select> 
                         </div>
                         <div class="form-group">
+                            <input type="hidden" id="parent-id" value="{{$department->parent_id}}">
                             <label for="exampleInputParent1">Phòng ban cha</label>
                             <select name="parent_id" id="exampleInputParent1" class="form-control">
                                 

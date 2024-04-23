@@ -14,6 +14,10 @@ class PersonService {
         return $this->personRepository->all();
     }
 
+    public function allWithProject(){
+        return $this->personRepository->allWithProject();
+    }
+
     public function create($user, $data){
         $data['user_id'] = $user;
         return $this->personRepository->create($data);

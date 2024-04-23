@@ -7,6 +7,7 @@ use App\Services\ProjectService;
 use App\Services\CompanyService;
 use App\Services\PersonService;
 
+
 class ProjectController extends Controller
 {
     protected $projectService;
@@ -39,8 +40,32 @@ class ProjectController extends Controller
         return redirect()->back();
     }
 
+    public function edit($project){
+        $companies = $this->companyService->all();
+        $project = $this->projectService->find($project);
+        return view('projects/edit', [
+            'project' => $project,
+            'companies' => $companies
+        ]);
+    }
+
+    public function update($project, Request $request){
+        $result = $this->projectService->update($project, $request->all());
+        if($result){
+            session()->flash('success','Cập nhật thành công');
+            return redirect('/projects/index');
+        }
+        return redirect()->back();
+    }
+
+    public function destroy($id){
+        $this->projectService->delete($id);
+        \session()->flash('success', 'Xóa thành công');
+        return redirect('/projects/index');
+    }
+
     public function getPersons(){
-        $people = $this->personService->all();
+        $people = $this->personService->allWithProject();      
         return response()->json([
             'people' => $people
         ]);
