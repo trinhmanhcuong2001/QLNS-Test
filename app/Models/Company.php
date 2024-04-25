@@ -25,4 +25,9 @@ class Company extends Model
     {
         return $this->hasMany(Person::class);
     }
+
+    public function projects(): hasMany
+    {
+        return $this->hasMany(Project::class);
+    }
 }

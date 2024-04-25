@@ -11,6 +11,8 @@ use App\Services\PersonService;
 class ProjectController extends Controller
 {
     protected $projectService;
+    protected $companyService;
+    protected $personService;
     public function __construct(ProjectService $projectService, CompanyService $companyService, PersonService $personService){
         $this->projectService = $projectService;
         $this->companyService = $companyService;

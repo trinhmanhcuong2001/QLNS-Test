@@ -55,5 +55,7 @@ class ProjectService
         $this->projectRepository->delete($id);
     }
 
-
+    public function getPersonByProject($project){
+        return $this->projectRepository->getPersonByProject($project);
+    }
 }

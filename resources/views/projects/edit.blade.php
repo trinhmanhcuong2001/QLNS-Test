@@ -44,7 +44,7 @@
                         </div>                      
                         <div class="form-group">
                             <label for="exampleInputCompany1">Công ty</label>
-                            <select name="company_id" id="exampleInputCompany1" class="form-control" onchange="getPerson();">
+                            <select name="company_id" id="exampleInputCompany1" class="form-control" onchange="getPersonByCompany();">
                                 <option value="">Chọn công ty</option>
                                 @foreach ($companies as $company)
                                     <option value="{{$company->id}}" {{$project->company_id==$company->id ? 'selected' : ''}}>{{$company->name}}</option>
@@ -80,6 +80,9 @@
     <script>
        const url = '{{URL::to('/projects/getPersons')}}';
        const projectId = {{$project->id}} ;
+       document.addEventListener('DOMContentLoaded', () =>{
+            getPersonByCompany();
+       });
     </script>
     <script src="{{URL::asset('template/js/main.js')}}"></script>
     

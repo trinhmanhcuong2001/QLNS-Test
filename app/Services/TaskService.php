@@ -29,4 +29,12 @@ class TaskService {
     public function delete($id){
         return $this->taskRepository->delete($id);
     }
+
+    public function filter($data){
+        
+    }
+
+    public function search($data){
+        return $this->taskRepository->search($data['keyword']);
+    }
 }

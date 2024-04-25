@@ -38,4 +38,10 @@ class ProjectRepository {
         $project->people()->detach();
         $project->people()->attach($person);
     }
+
+    public function getPersonByProject($project){
+        $project = $this->find($project);
+        $people = $project->people;
+        return $people;
+    }
 }

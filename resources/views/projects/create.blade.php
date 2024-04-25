@@ -43,7 +43,7 @@
                         </div>                      
                         <div class="form-group">
                             <label for="exampleInputCompany1">Công ty</label>
-                            <select name="company_id" id="exampleInputCompany1" class="form-control" onchange="getPerson();">
+                            <select name="company_id" id="exampleInputCompany1" class="form-control" onchange="getPersonByCompany();">
                                 <option value="">Chọn công ty</option>
                                 @foreach ($companies as $company)
                                     <option value="{{$company->id}}">{{$company->name}}</option>

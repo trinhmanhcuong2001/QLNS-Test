@@ -1,14 +1,10 @@
 const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 const company = document.getElementById('exampleInputCompany1');
+const project = document.getElementById('exampleInputProject1');
 
-// company.addEventListener('change', ()=> {
-//     getDepartment();
-// })
 document.addEventListener('DOMContentLoaded', () => {
     if(document.getElementById('exampleInputParent1')){
         getDepartment();
-    }else {
-        getPerson();
     }
 });
 
@@ -36,7 +32,7 @@ function getDepartment(){
     })
 }
 
-function getPerson(){
+function getPersonByCompany(){
     var companyId = company.value;
     fetch(url)
     .then(response => response.json())
@@ -64,4 +60,39 @@ function getPerson(){
         console.error(error);
         alert('Đã xảy ra lỗi!');
     });
+}
+
+function getPersonByProject(id){
+    fetch(url + '?project=' + id)
+    .then(response => response.json())
+    .then(data => {
+        let options = '<option>Chọn người làm</option>';
+        data.forEach(person => {
+            options += `<option value="${person.id}">${person.full_name}</option>`;
+        })
+        document.getElementById('exampleInputPerson1').innerHTML = options;
+        
+    })
+    .catch(error => {
+        console.log(error);
+        alert('Xảy ra lỗi!');
+    })
+}
+
+function getProject(){
+    var companyId = company.value;
+    fetch(urlProject + '?company=' + companyId)
+    .then(response => response.json())
+    .then(data => {
+        let options2 = '<option value="">Dự án</option>';
+        data.projects.forEach(project => {
+            options2 += `<option value="${project.id}">${project.name}</option>`;
+        })
+
+        document.getElementById('exampleInputProject1').innerHTML = options2;
+    })
+    .catch(error => {
+        console.error(error);
+        alert('Có lỗi!');
+    })
 }

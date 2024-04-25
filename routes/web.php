@@ -8,6 +8,7 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\TaskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -84,4 +85,18 @@ Route::prefix('projects')->group(function (){
     Route::put('edit/{project}', [ProjectController::class, 'update']);
     Route::get('delete/{project}', [ProjectController::class, 'destroy']);
     Route::get('getPersons', [ProjectController::class, 'getPersons']);
+});
+//Task Route
+Route::prefix('tasks')->group(function (){
+    Route::get('index', [TaskController::class, 'index']);
+    Route::get('create', [TaskController::class, 'create']);
+    Route::post('create', [TaskController::class, 'store']);
+    Route::get('edit/{task}', [TaskController::class, 'edit']);
+    Route::put('edit/{task}', [TaskController::class, 'update']);
+    Route::get('delete/{task}', [TaskController::class, 'destroy']);
+    Route::get('getPersonByProject', [TaskController::class, 'getPersonByProject']);
+    Route::get('getProject', [TaskController::class, 'getProject']);
+    Route::get('filter', [TaskController::class, 'filter']);
+    Route::get('search', [TaskController::class, 'search']);
+    Route::get('exportExcel', [TaskController::class, 'exportExcel']);
 });

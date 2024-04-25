@@ -11,7 +11,7 @@ class TaskRepository {
     }
 
     public function all(){
-        return $this->task->all();
+        return $this->task->orderBy('project_id')->get();
     }
 
     public function create($data){
@@ -30,5 +30,10 @@ class TaskRepository {
     public function delete($id){
         $task = $this->find($id);
         $task->delete();
+    }
+
+    public function search($keyword){
+        $tasks = $this->task->where('name', 'like' , '%' . $keyword . '%')->get();
+        return $tasks;
     }
 }

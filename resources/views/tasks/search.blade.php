@@ -28,53 +28,6 @@
       <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <form action="{{URL::to('tasks/filter')}}">
-                    <table class="table table-hover text-nowrap">
-                        <thead>
-                            <th>Lọc công việc</th>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <select name="company_id" id="exampleInputCompany1" class="form-control" onchange="getProject(this.value);">
-                                        <option>Công ty</option>
-                                        @foreach ($companies as $company)
-                                            <option value="{{$company->id}}">{{$company->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </td>
-                                <td>
-                                    <select name="project_id" id="exampleInputProject1" class="form-control" onchange="getPersonByProject(this.value);">
-                                        <option value="">Dự án</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    <select name="person_id" id="exampleInputPerson1" class="form-control">
-                                        <option value="">Người làm</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    <select name="priority" id="" class="form-control">
-                                        <option value="">Mức độ ưu tiên</option>
-                                        <option value="1">Cao</option>
-                                        <option value="2">Trung bình</option>
-                                        <option value="3">Thấp</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    <select name="status" id="" class="form-control">
-                                        <option value="">Trạng thái</option>
-                                        <option value="1">Mới tạo</option>
-                                        <option value="2">Đang làm</option>
-                                        <option value="3">Hoàn thành</option>
-                                        <option value="4">Tạm hoãn</option>
-                                    </select>
-                                </td>
-                                <td><button class="btn btn-primary">Lọc</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </form>
               <div class="card">
                 <form action="{{URL::to('tasks/search')}}">
                     <div class="card-header">
@@ -111,16 +64,17 @@
                       </tr>
                     </thead>
                     <tbody>
-                      @foreach ($tasks as $task)
+                      @if (count($tasks) > 0)
+                        @foreach ($tasks as $task)
                         <tr>
                             <td>                       
                                 <a href="" style="padding-right: 5px;color: Dodgerblue;">
-                                  <i class="fas fa-pencil-alt"></i>
+                                    <i class="fas fa-pencil-alt"></i>
                                 </a>
                                 <a onclick="return confirm('Bạn có chắc muốn xóa công việc này không?')" href="" style="color:red;">
-                                  <i class="fas fa-trash"></i>  
+                                    <i class="fas fa-trash"></i>  
                                 </a>                                           
-                              </td>
+                                </td>
                             <td>{{$task->name}}</td>
                             <td>{{$task->description}}</td>
                             <td>{{$task->project->company->name}}</td>
@@ -158,7 +112,12 @@
                                 @endswitch
                             </td>
                         </tr>
-                      @endforeach
+                        @endforeach
+                      @else
+                        <tr>
+                            <td style="text-align: center;" colspan="8">Không tìm thấy công việc nào!</td>    
+                        </tr>  
+                      @endif
                       
                     </tbody>
                   </table>

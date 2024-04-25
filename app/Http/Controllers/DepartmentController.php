@@ -10,6 +10,7 @@ use App\Http\Requests\DepartmentFormRequest;
 class DepartmentController extends Controller
 {
     protected $departmentService;
+    protected $companyService;
     public function __construct(DepartmentService $departmentService, CompanyService $companyService){
         $this->departmentService = $departmentService;
         $this->companyService = $companyService;

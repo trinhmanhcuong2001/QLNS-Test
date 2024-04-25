@@ -30,4 +30,7 @@ class CompanyService {
         $this->companyRepository->delete($id);
     }
 
+    public function getProject($id){
+        return $this->companyRepository->getProject($id);
+    }
 }

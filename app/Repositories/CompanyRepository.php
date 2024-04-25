@@ -33,4 +33,10 @@ class CompanyRepository {
         $company->delete();
     }
 
+    public function getProject($id){
+        $company = $this->find($id);
+        $projects = $company->projects;
+        return $projects;
+    }
+
 }
