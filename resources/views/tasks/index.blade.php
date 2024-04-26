@@ -37,7 +37,7 @@
                             <tr>
                                 <td>
                                     <select name="company_id" id="exampleInputCompany1" class="form-control" onchange="getProject(this.value);">
-                                        <option>Công ty</option>
+                                        <option value="">Công ty</option>
                                         @foreach ($companies as $company)
                                             <option value="{{$company->id}}">{{$company->name}}</option>
                                         @endforeach

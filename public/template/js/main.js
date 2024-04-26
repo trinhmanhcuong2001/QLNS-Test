@@ -66,7 +66,7 @@ function getPersonByProject(id){
     fetch(url + '?project=' + id)
     .then(response => response.json())
     .then(data => {
-        let options = '<option>Chọn người làm</option>';
+        let options = '<option value="">Chọn người làm</option>';
         data.forEach(person => {
             options += `<option value="${person.id}">${person.full_name}</option>`;
         })
