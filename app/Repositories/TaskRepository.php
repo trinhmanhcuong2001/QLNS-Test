@@ -36,4 +36,28 @@ class TaskRepository {
         $tasks = $this->task->where('name', 'like' , '%' . $keyword . '%')->get();
         return $tasks;
     }
+
+    public function filter($data){
+        $query = $this->task->query();
+
+        if(isset($data['company_id'])){
+            $query->whereHas('project', function ($query) use ($data){
+                $query->where('company_id', $data['company_id']);
+            });
+        }
+        if(isset($data['project_id'])){
+            $query->where('project_id', $data['project_id']);
+        }
+
+        if(isset($data['person_id'])){
+            $query->where('person_id', $data['person_id']);
+        }
+        if(isset($data['priority'])){
+            $query->where('priority', $data['priority']);
+        }
+        if(isset($data['status'])){
+            $query->where('status', $data['status']);
+        }
+        return $query->get();
+    }
 }

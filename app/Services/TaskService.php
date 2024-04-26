@@ -31,7 +31,7 @@ class TaskService {
     }
 
     public function filter($data){
-        
+        return $this->taskRepository->filter($data);
     }
 
     public function search($data){

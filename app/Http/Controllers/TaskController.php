@@ -44,8 +44,10 @@ class TaskController extends Controller
 
     public function edit($id){
         $task = $this->taskService->find($id);
+        $projects = $this->projectService->all();
         return view('tasks.edit', [
-            'task' => $task
+            'task' => $task,
+            'projects' => $projects
         ]);
     }
 
@@ -79,11 +81,12 @@ class TaskController extends Controller
     }
 
     public function filter(Request $request){
-        // $tasks = $this->taskService->filter($request->all());
-        // return view('tasks.filter', [
-        //     'tasks' => $tasks
-        // ]);
-        dd($request->all());
+        $tasks = $this->taskService->filter($request->all());
+        $companies = $this->companyService->all();
+        return view('tasks.filter', [
+            'tasks' => $tasks,
+            'companies' => $companies
+        ]);
     }
 
     public function search(Request $request){

@@ -68,10 +68,10 @@
                         @foreach ($tasks as $task)
                         <tr>
                             <td>                       
-                                <a href="" style="padding-right: 5px;color: Dodgerblue;">
+                                <a href="{{URL::to('tasks/edit', $task->id)}}" style="padding-right: 5px;color: Dodgerblue;">
                                     <i class="fas fa-pencil-alt"></i>
                                 </a>
-                                <a onclick="return confirm('Bạn có chắc muốn xóa công việc này không?')" href="" style="color:red;">
+                                <a onclick="return confirm('Bạn có chắc muốn xóa công việc này không?')" href="{{URL::to('tasks/delete')}}" style="color:red;">
                                     <i class="fas fa-trash"></i>  
                                 </a>                                           
                                 </td>
