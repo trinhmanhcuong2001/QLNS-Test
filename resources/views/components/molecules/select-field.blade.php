@@ -1,0 +1,2 @@
+<x-atoms.label :for="$id" :text="$label" />
+<x-atoms.select :id="$id" :name="$name" :value="$value" :onchange="$onchange" :multiple="$multiple" :placeholder="$placeholder" :options="$options" :value="$value" :label="$content" />
