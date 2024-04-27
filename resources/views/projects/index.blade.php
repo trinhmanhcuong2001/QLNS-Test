@@ -5,7 +5,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Danh sách dự án</h1>
+            <x-atoms.title title="Danh sách dự án" />
           </div>
           
         </div>
@@ -25,13 +25,13 @@
               <div class="card-body">
                 <table id="example2" class="table table-bordered table-hover">
                   <thead style="background-color: Dodgerblue;color:white;">
-                  <tr>
-                    <th width="150px">Thao tác</th>
-                    <th>Mã</th>
-                    <th>Tên</th>
-                    <th>Công ty</th>
-                    <th>Nhân viên</th>
-                  </tr>
+                    <tr>
+                      <th width="150px">Thao tác</th>
+                      <th>Mã</th>
+                      <th>Tên</th>
+                      <th>Công ty</th>
+                      <th>Nhân viên</th>
+                    </tr>
                   </thead>
                   <tbody>
                   @foreach ($projects as $project)
