@@ -1,3 +1,5 @@
+
+
 <table class="{{$attributes['class']}}">
     <x-atoms.thead :columns="$columns" :content="$content" />
     <tbody>
@@ -6,6 +8,7 @@
                 @foreach ($row as $data)
                     <x-atoms.td :data="$data" />
                 @endforeach
+                {{$slot}}
             </tr>
         @endforeach
     </tbody>
