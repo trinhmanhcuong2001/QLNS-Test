@@ -34,7 +34,7 @@
                   </thead>
                   <tbody>
                   @foreach ($companies as $company)
-                    <tr>
+                    <tr style="background-color: rgb(201, 225, 222);">
                       <td>
                         
                         <input type="checkbox" name="" id="" checked></td>

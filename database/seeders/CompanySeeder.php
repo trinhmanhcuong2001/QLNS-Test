@@ -13,6 +13,13 @@ class CompanySeeder extends Seeder
      */
     public function run(): void
     {
-        Company::factory()->count(20)->create();
+        Company::factory()->count(20)->create()->each(function ($company){
+            $company->departments()->createMany([
+                ['code' => 'BGD', 'name' => 'Ban giám đốc', 'parent_id' => 0],
+                ['code' => 'DEV', 'name' => 'Phòng phát triển phần mềm', 'parent_id' => 0],
+                ['code' => 'QA-Department', 'name' => 'Phòng quản trị chât lượng', 'parent_id' => 0],
+                ['code' => 'KT', 'name' => 'Phòng kinh tế', 'parent_id' => 0],
+            ]);
+        });
     }
 }
